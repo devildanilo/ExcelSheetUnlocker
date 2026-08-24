@@ -1,4 +1,4 @@
-﻿# 🔓 Excel Sheet Unlocker
+# 🔓 Excel Sheet Unlocker
 
 Unlock protected Excel sheets with one click — saves a clean copy or overwrites the original.
 
@@ -71,4 +71,4 @@ Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) before
 
 ## Author
 
-**Danilo Di Pietrantonio** — tangina.software@gmail.com
+**Danilo Di Pietrantonio** ([@devildanilo](https://github.com/devildanilo)) — tangina.software@gmail.com
