@@ -1,4 +1,4 @@
-﻿# PyCharm
+# PyCharm
 .idea/
 
 # Virtual environment
@@ -17,3 +17,6 @@ __pycache__/
 # OS files
 Thumbs.db
 .DS_Store
+
+# Archive (old/unused files kept for reference)
+_archive/
