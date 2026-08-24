@@ -1,0 +1,17 @@
+Copyright (c) 2026 Danilo Di Pietrantonio
+All rights reserved.
+
+Permission is granted to use and distribute this software in its
+original, unmodified form, free of charge, provided that this
+copyright notice is retained in all copies.
+
+Commercial use, sale, monetization, or any other form of financial
+gain from this software is NOT permitted without the express written
+authorization of Danilo Di Pietrantonio.
+
+Modification of this software is NOT permitted without the express
+written authorization of Danilo Di Pietrantonio.
+To request authorization, contact: tangina.software@gmail.com
+
+THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+THE AUTHOR SHALL NOT BE LIABLE FOR ANY DAMAGES ARISING FROM ITS USE.
