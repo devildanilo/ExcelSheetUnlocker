@@ -88,3 +88,6 @@ Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) before
 ## Author
 
 **Danilo Di Pietrantonio** ([@devildanilo](https://github.com/devildanilo)) — tangina.software@gmail.com
+
+
+[![Donate on Ko-Fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/devildanilo)
