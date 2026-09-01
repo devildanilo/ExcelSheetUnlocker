@@ -240,6 +240,7 @@ class FileRow:
         self.sheet_rows        = []
         self.expanded          = False
         self.scan_done         = False
+        self.success           = False
 
         self.outer = tk.Frame(parent, bg=BORDER, pady=1)
         self.outer.pack(fill="x", padx=0, pady=2)
@@ -361,8 +362,9 @@ class FileRow:
 # ── Main App ───────────────────────────────────────────────────────────────
 class ExcelSheetUnlockerApp:
     def __init__(self, root):
-        self.root = root
-        self.rows = []
+        self.root    = root
+        self.rows    = []
+        self._running = False
         self._setup_window()
         self._build_ui()
 
@@ -621,6 +623,8 @@ class ExcelSheetUnlockerApp:
 
     # ── Processing ────────────────────────────────────────────────────────
     def _run(self):
+        if self._running:
+            return
         active = [r for r in self.rows
                   if r.enabled.get() and r.selected_xml_names()]
         if not active:
@@ -630,6 +634,7 @@ class ExcelSheetUnlockerApp:
                 "Expand a file (▶) and check the sheets you want to unlock."
             )
             return
+        self._running = True
         self.run_btn.config(state="disabled", bg=BG3, fg=TEXT_DIM,
                             text="⏳   Processing...")
         threading.Thread(
@@ -655,6 +660,7 @@ class ExcelSheetUnlockerApp:
                 row.path, selected, create_copy, self._log
             )
 
+            row.success = success
             if success:
                 ok += 1
                 row.set_status("✓ done", ACCENT)
@@ -668,12 +674,13 @@ class ExcelSheetUnlockerApp:
 
         def autoclear():
             for row in list(self.rows):
-                if row.status_lbl.cget("text") == "✓ done":
+                if row.success:
                     row.destroy()
                     self.rows.remove(row)
             self._update_count()
             self._refresh_canvas()
             self.progress["value"] = 0
+            self._running = False
 
         self.root.after(1200, autoclear)
         self.root.after(0, self.run_btn.config, {

@@ -56,6 +56,14 @@ Excel `.xlsx` files are ZIP archives. Sheet protection is stored as a `<sheetPro
 
 ---
 
+## Known Limitations
+
+- **Workbook-level protection is not removed.** This tool only strips `<sheetProtection>` tags, which lock individual sheets. A separate `<workbookProtection>` tag — common in macro-enabled `.xlsm` files — controls workbook structure (preventing sheet reordering, insertion, or deletion) and is left untouched. If your file has workbook protection, the sheets will be unlocked but the workbook structure lock will remain.
+
+- **Password-encrypted files are not supported.** Files that are fully encrypted (where Excel prompts for a password just to *open* the file) cannot be processed — they are not standard ZIP archives.
+
+---
+
 ## License
 
 Custom non-commercial license — see [LICENSE.txt](LICENSE.txt).  
