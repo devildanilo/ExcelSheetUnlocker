@@ -346,6 +346,11 @@ class FileRow:
             r.enabled.set(False)
 
     def set_status(self, text, color):
+        # May be called from a worker thread during batch processing —
+        # marshal the actual widget mutation onto the Tk main loop.
+        self.status_lbl.after(0, self._set_status_direct, text, color)
+
+    def _set_status_direct(self, text, color):
         self.status_lbl.config(text=text, fg=color)
         self.name_lbl.config(fg=color)
 
@@ -549,6 +554,11 @@ class ExcelSheetUnlockerApp:
         self.dz_label.config(bg=c)
 
     def _log(self, msg, tag="info"):
+        # May be called from a worker thread (batch processing) or the
+        # main thread (UI actions) — always marshal onto the Tk main loop.
+        self.root.after(0, self._log_direct, msg, tag)
+
+    def _log_direct(self, msg, tag):
         self.log.config(state="normal")
         self.log.insert("end", msg + "\n", tag)
         self.log.see("end")
@@ -631,8 +641,7 @@ class ExcelSheetUnlockerApp:
     def _process_all(self, active_rows, create_copy):
         total = len(active_rows)
         ok    = 0
-        self.progress["maximum"] = total
-        self.progress["value"]   = 0
+        self.root.after(0, self.progress.configure, {"maximum": total, "value": 0})
 
         for i, row in enumerate(active_rows, 1):
             selected = row.selected_xml_names()
@@ -652,8 +661,7 @@ class ExcelSheetUnlockerApp:
             else:
                 row.set_status("✗ error", DANGER)
 
-            self.progress["value"] = i
-            self.root.update_idletasks()
+            self.root.after(0, self.progress.configure, {"value": i})
 
         tag = "ok" if ok == total else "warn"
         self._log(f"\n🏁  Done — {ok}/{total} file(s) processed.", tag)
@@ -668,8 +676,10 @@ class ExcelSheetUnlockerApp:
             self.progress["value"] = 0
 
         self.root.after(1200, autoclear)
-        self.run_btn.config(state="normal", bg=ACCENT, fg="#0f1117",
-                            text="🔓   Unlock Selected Sheets")
+        self.root.after(0, self.run_btn.config, {
+            "state": "normal", "bg": ACCENT, "fg": "#0f1117",
+            "text": "🔓   Unlock Selected Sheets"
+        })
 
 
 # ── Entry point ────────────────────────────────────────────────────────────
