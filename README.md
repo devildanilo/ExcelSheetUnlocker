@@ -60,7 +60,7 @@ The output will be in the `dist/` folder.
 
 ## How it works
 
-Excel `.xlsx` files are ZIP archives. Sheet protection is stored as a `<sheetProtection>` XML tag inside each worksheet file. This tool extracts the archive, removes that tag from the selected sheets, and repackages the file — no password cracking, no external dependencies.
+Excel `.xlsx` files are ZIP archives. Sheet protection is stored as a `<sheetProtection>` XML tag inside each worksheet file. This tool extracts the archive, removes that tag from the selected sheets, and repackages the file — no password cracking.
 
 ---
 
