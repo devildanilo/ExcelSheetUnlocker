@@ -3,6 +3,8 @@
 Unlock protected Excel sheets with one click — saves a clean copy or overwrites the original.
 
 > **No Python required:** grab the latest standalone `.exe` from [Releases](../../releases).
+> 
+> ⚠️ Windows may show a "Windows protected your PC" warning since the `.exe` isn't code-signed — click **More info → Run anyway** to proceed.
 
 ---
 
