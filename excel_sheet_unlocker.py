@@ -26,6 +26,8 @@ try:
 except ImportError:
     DND_AVAILABLE = False
 
+__version__ = "1.0.0"
+
 
 # ── Resource helper (works in dev and in PyInstaller .exe) ─────────────────
 def _resource(relative_path):

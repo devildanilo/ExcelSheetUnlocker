@@ -1,0 +1,4 @@
+﻿# Optional — enables drag & drop support.
+# The app works without it (browse button only).
+tkinterdnd2>=0.3.0
+

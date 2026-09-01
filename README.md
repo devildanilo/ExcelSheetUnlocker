@@ -2,6 +2,14 @@
 
 Unlock protected Excel sheets with one click — saves a clean copy or overwrites the original.
 
+> **No Python required:** grab the latest standalone `.exe` from [Releases](../../releases).
+
+---
+
+## Screenshot
+
+![Excel Sheet Unlocker screenshot](screenshot.png)
+
 ---
 
 ## Features
